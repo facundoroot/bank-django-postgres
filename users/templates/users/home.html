@@ -1,0 +1,39 @@
+<!-- el objeto user nos lo da django cuando la persona se logea asi que tiene todos los atributos del user -->
+
+<h1>Welcome home!! {{user.username}} {{user.email}} {{user.id}} {{user_credit_card.card_number}}</h1>
+
+<!-- si tiene registrada tarjeta de credito la muestro, sino muestro el boton para registrar -->
+{%if user_credit_card.card_number != '' and user_credit_card.card_number is not None%}
+    <h2>Credit card number: {{user_credit_card.card_number}}</h2>
+    <h2>Funds: ${{user_credit_card.funds}}</h2>
+
+
+
+    <!-- depositar dinero -->
+        <a href="{% url 'deposit' %}">Deposit money</a>
+        <br>
+    <!-- retirar dinero de la cuenta -->
+    {% if user_credit_card.funds > 0%}
+        <a href="{% url 'withdrawl' %}">Withdraw money</a>
+        <br>
+        <a href="{% url 'transference' %}">Make a transfer</a>
+        <br>
+    {% endif %}
+
+
+
+{%else%}
+<!-- para referenciar la url en otra app lo hago directamente por el nombre que tiene en url patterns -->
+    <a href="{% url 'credit_card_register' %}">Register your credit card</a>
+{%endif%}
+
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+
+<a href="{% url 'logout' %}">Logout</a>

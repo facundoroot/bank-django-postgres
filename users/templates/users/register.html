@@ -1,0 +1,8 @@
+<h3>Register</h3>
+<form method="POST">
+    <!-- si no aclaro el action, se envia denuevo a la view -->
+    {% csrf_token %}
+    {{form}}
+    <br>
+    <button type="submit">Register</button>
+</form>

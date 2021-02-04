@@ -1,0 +1,13 @@
+<h3>Login</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Login</button>
+</form>
+
+You dont have an account yet? <a href="{% url 'register' %}">Register</a>
+
+
+<!-- recordar cambiar el redirect de esta pagina que es automatica en settings.py abajo de todo -->
+<!-- LOGIN_REDIRECT_URL='user:home' -->
+    

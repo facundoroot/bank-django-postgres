@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    {% if form != 'Ya tienes una tarjeta registrada a tu nombre'%}
+        <button type="submit">register credit card</button>
+    {%endif%}
+</form>

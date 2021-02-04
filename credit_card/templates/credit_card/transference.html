@@ -1,0 +1,27 @@
+<h3>Transference</h3>
+<ul>
+    <li>
+        The system will only let you do transferences to other users registered in the bank (search by username)
+    </li>
+    <li>
+        The system wont let you transfer more money than you have in your funds
+    </li>
+    <li>
+        After the transference the money you transfered to another user will be discounted from your funds
+    </li>
+</ul>
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">transfer</button>
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+
+<a href="{% url 'home' %}">Home</a>

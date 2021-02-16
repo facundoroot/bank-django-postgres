@@ -17,3 +17,4 @@ class Transference(models.Model):
     money_amount = models.IntegerField()
     date = models.DateField(auto_now_add=True)
 
+###
